@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sara Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Custom cursor glow follows the pointer on desktop. -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Opening intro animation with typewriter copy. -->
+  <div class="intro-screen" id="introScreen" aria-label="Opening animation">
+    <div class="intro-stars" aria-hidden="true"></div>
+    <p class="intro-line" id="introLine"></p>
+  </div>
+
+  <!-- Global animated background layers. -->
+  <div class="sky" aria-hidden="true">
+    <div class="star-layer"></div>
+    <div class="particle-layer" id="particleLayer"></div>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+  </div>
+
+  <!-- Jukebox controls: each real song plays a selected one-minute highlight clip. -->
+  <div class="music-player compact-player" aria-label="Background music controls">
+    <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false">
+      <span class="music-icon">&#9834;</span>
+      <span>Play Jukebox</span>
+    </button>
+  </div>
+
+  <!-- Device optimizer lets viewers choose the layout that feels best on their screen. -->
+  <div class="device-mode" id="deviceMode" aria-label="Display mode">
+    <button type="button" data-mode="auto" class="active">Auto</button>
+    <button type="button" data-mode="mobile">Mobile</button>
+    <button type="button" data-mode="desktop">PC</button>
+  </div>
+
+  <!--
+    To use the real tracks, place legally owned MP3 files in this folder with these names:
+    perfect-ed-sheeran.mp3
+    until-i-found-you.mp3
+    golden-hour.wav
+    Each track plays a one-minute highlight. If a file is missing, the site plays an original generated mood instead.
+  -->
+  <audio id="externalAudio" preload="auto" loop></audio>
+
+  <main>
+    <!-- Hero section: full-screen first impression and glowing title reveal. -->
+    <section class="hero section" id="hero">
+      <div class="hero-stars" id="heroStars" aria-hidden="true"></div>
+      <div class="moon" aria-hidden="true"></div>
+      <div class="orbit orbit-one" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="shooting-star shooting-one" aria-hidden="true"></div>
+      <div class="shooting-star shooting-two" aria-hidden="true"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Project: Sara</p>
+        <h1 class="site-title">The Sara Universe</h1>
+        <p class="hero-typewriter" id="heroTypewriter"></p>
+        <p class="hero-note">A tiny galaxy made by Bhaswar, just to make one person smile.</p>
+        <div class="portugal-hint" aria-label="Portugal fan hint">
+          <span></span>
+          <strong>Portugal star energy</strong>
+        </div>
+        <a class="neon-button" href="#countdown">Coming on 17 August</a>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- Teaser section with loading status and animated progress bar. -->
+    <section class="teaser section reveal" id="teaser">
+      <div class="section-shell glass-panel">
+        <p class="eyebrow">Teaser Transmission</p>
+        <h2>Project: Sara</h2>
+        <p class="muted">Status: Loading something special...</p>
+        <p class="release-date">Release date: <span>17 August</span></p>
+        <div class="progress-wrap" aria-label="Animated loading progress">
+          <div class="progress-bar"></div>
+        </div>
+        <div class="teaser-grid" aria-label="Sara universe details">
+          <div>
+            <strong>Mission</strong>
+            <span>Make Sara feel celebrated before the reveal.</span>
+          </div>
+          <div>
+            <strong>Creator</strong>
+            <span>Bhaswar, her guy best friend with a whole sky of ideas.</span>
+          </div>
+          <div>
+            <strong>Signal</strong>
+            <span>Perfect in the background, glowing stars, and one secret gift.</span>
+          </div>
+          <div>
+            <strong>Portugal Hint</strong>
+            <span>A little red, green, and gold sparkle for her fan heart.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Countdown section: live timer to 17 August of the current year. -->
+    <section class="countdown section reveal" id="countdown">
+      <div class="section-heading">
+        <p class="eyebrow">Countdown</p>
+        <h2>Until The Date Lights Up</h2>
+      </div>
+      <div class="timer-grid" id="timerGrid" aria-live="polite">
+        <div class="timer-card glass-panel"><strong id="days">00</strong><span>Days</span></div>
+        <div class="timer-card glass-panel"><strong id="hours">00</strong><span>Hours</span></div>
+        <div class="timer-card glass-panel"><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div class="timer-card glass-panel"><strong id="seconds">00</strong><span>Seconds</span></div>
+      </div>
+    </section>
+
+    <!-- Interactive constellation: clickable stars show compliment or memory cards. -->
+    <section class="constellation section reveal" id="constellation">
+      <div class="section-heading">
+        <p class="eyebrow">Memory Constellation</p>
+        <h2>Tap A Star</h2>
+        <p class="muted">Every little light has something kind hidden inside. Some are compliments, some are memory placeholders Bhaswar can customize later.</p>
+      </div>
+      <div class="constellation-field glass-panel" id="constellationField" aria-label="Interactive star field"></div>
+    </section>
+
+    <!-- Mini game: catch falling stars/gifts with keyboard, mouse, or touch controls. -->
+    <section class="game section reveal" id="game">
+      <div class="section-heading">
+        <p class="eyebrow">Mini Game</p>
+        <h2>Catch The Stars</h2>
+        <p class="muted">Move the catcher and collect 20 falling lights.</p>
+      </div>
+      <div class="game-card glass-panel">
+        <div class="game-topline">
+          <span>Score: <strong id="score">0</strong></span>
+          <button class="neon-button compact" id="startGame" type="button">Start</button>
+        </div>
+        <div class="game-board" id="gameBoard" tabindex="0" aria-label="Catch the Stars game">
+          <div class="player" id="player" aria-hidden="true"></div>
+        </div>
+        <div class="touch-controls" aria-label="Touch controls">
+          <button type="button" id="leftBtn">Left</button>
+          <button type="button" id="rightBtn">Right</button>
+        </div>
+        <p class="game-message" id="gameMessage">Catch 20 stars to unlock a brighter message.</p>
+      </div>
+    </section>
+
+    <!-- Secret letter: locked gift reacts, reveals letter preview, and triggers confetti. -->
+    <section class="secret section reveal" id="secret">
+      <div class="section-heading">
+        <p class="eyebrow">Final Secret</p>
+        <h2>The Locked Gift</h2>
+        <p class="muted">A small preview now. The real magic waits for 17 August.</p>
+      </div>
+      <div class="secret-card glass-panel">
+        <button class="gift-box" id="giftBox" type="button" aria-label="Open locked gift">
+          <span class="gift-lid"></span>
+          <span class="gift-body"></span>
+          <span class="gift-ribbon"></span>
+        </button>
+        <div class="letter" id="letter">
+          <h3>For Sara</h3>
+          <p>This part unlocks on 17 August &#128521;</p>
+          <p class="letter-body">Dear Sara, this is only the preview. The real letter is waiting for your birthday, but here is the truth already: you make ordinary days feel lighter, kinder, and a little more magical. Bhaswar made this small universe because some friendships deserve their own sky.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review wall: Sara can rate the universe and leave a private browser-saved note. -->
+    <section class="reviews section reveal" id="reviews">
+      <div class="section-heading">
+        <p class="eyebrow">Review Wall</p>
+        <h2>Rate This Universe</h2>
+        <p class="muted">A tiny guestbook for one very special visitor.</p>
+      </div>
+      <div class="review-layout">
+        <form class="review-form glass-panel" id="reviewForm">
+          <label for="reviewName">Name</label>
+          <input id="reviewName" name="reviewName" type="text" value="Sara" maxlength="28">
+
+          <label>Stars</label>
+          <div class="rating-picker" id="ratingPicker" aria-label="Choose rating">
+            <button type="button" data-rating="1">&#9733;</button>
+            <button type="button" data-rating="2">&#9733;</button>
+            <button type="button" data-rating="3">&#9733;</button>
+            <button type="button" data-rating="4">&#9733;</button>
+            <button type="button" data-rating="5">&#9733;</button>
+          </div>
+
+          <label for="reviewText">Review</label>
+          <textarea id="reviewText" name="reviewText" rows="4" maxlength="180" placeholder="Write what this little universe feels like..."></textarea>
+
+          <button class="neon-button compact" type="submit">Add Review</button>
+          <p class="review-status" id="reviewStatus" aria-live="polite"></p>
+        </form>
+
+        <div class="review-wall" id="reviewWall" aria-live="polite">
+          <article class="review-card glass-panel">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"10/10 universe. Excellent stars, strong birthday mystery, and clearly made with too much care."</p>
+            <strong>- Bhaswar</strong>
+          </article>
+          <article class="review-card glass-panel">
+            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"The Portugal hint is subtle, the music is soft, and the whole sky seems to know Sara is special."</p>
+            <strong>- The Stars</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating modal card used by constellation stars. -->
+  <div class="memory-modal" id="memoryModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="memory-card glass-panel">
+      <button class="close-modal" id="closeModal" type="button" aria-label="Close memory">&times;</button>
+      <p class="eyebrow" id="modalKicker">Star Message</p>
+      <h3 id="modalTitle">You make people smile</h3>
+      <p id="modalText">That is a rare kind of magic.</p>
+    </div>
+  </div>
+
+  <canvas class="confetti-canvas" id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <footer class="footer">
+    <p>Made with &hearts; by Bhaswar</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
